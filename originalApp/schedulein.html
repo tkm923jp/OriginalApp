@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>予定登録</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="scripts.js"></script>
+</head>
+<body class="schedulein-page">
+    <header>
+        <div class="hamburger" onclick="toggleMenu()">
+            &#9776;
+        </div>
+        <h1 class="title">予定登録</h1>
+        <button class="logout-btn">ログアウト</button>
+    </header>
+
+    <nav id="sidebar" class="sidebar">
+        <ul>
+            <li><a href="schedulein.html">予定登録</a></li>
+            <li><a href="schedule-list.html">予定一覧</a></li>
+            <li><a href="vacation-request.html">休暇申請</a></li>
+            <li><a href="vacation-approval.html">休暇承認</a></li>
+            <li><a href="info-change.html">情報変更</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="schedule-container">
+            <!-- 日付選択 -->
+            <div class="date-picker">
+                <input type="text" id="selected-date" readonly>
+                <button class="calendar-btn" onclick="toggleCalendar()">📅</button>
+                <input type="date" id="calendar"  class="calendar" onchange="updateDate()" style="display:none;">
+            </div>
+
+            <!-- AM予定セクション -->
+            <div class="schedule-section">
+                <h2>AM</h2>
+                <div class="horizontal-select">
+                    <select>
+                        <option>AM予定①</option>
+                        <option>AM予定②</option>
+                        <option>AM予定③</option>
+                    </select>
+                    <select>
+                        <option>AM予定②</option>
+                        <option>AM予定③</option>
+                        <option>AM予定④</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- PM予定セクション -->
+            <div class="schedule-section">
+                <h2>PM</h2>
+                <div class="horizontal-select">
+                    <select>
+                        <option>PM予定①</option>
+                        <option>PM予定②</option>
+                        <option>PM予定③</option>
+                    </select>
+                    <select>
+                        <option>PM予定②</option>
+                        <option>PM予定③</option>
+                        <option>PM予定④</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- 固定メンバー設定 -->
+            <div class="fixed-member">
+                <div class="fixed-member-checkbox">
+                    <input type="checkbox" id="fixed-checkbox">
+                    <label for="fixed-checkbox">固定メンバーへ反映</label>
+                </div>
+                <button class="member-select-btn" onclick="openMemberModal()">メンバーを選択</button>
+            </div>
+
+            <!-- 登録ボタン -->
+            <button class="submit-btn">登録</button>
+        </div>
+    </main>
+
+    <!-- メンバー選択モーダル -->
+    <div id="memberModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeMemberModal()">&times;</span>
+            <h3>メンバーを選択</h3>
+            <div class="member-list">
+                <div class="member-column">
+                    <label><input type="checkbox" value="メンバーA"> メンバーA</label><br>
+                    <label><input type="checkbox" value="メンバーB"> メンバーB</label><br>
+                    <label><input type="checkbox" value="メンバーC"> メンバーC</label><br>
+                </div>
+                <div class="member-column">
+                    <label><input type="checkbox" value="メンバーD"> メンバーD</label><br>
+                    <label><input type="checkbox" value="メンバーE"> メンバーE</label><br>
+                    <label><input type="checkbox" value="メンバーF"> メンバーF</label><br>
+                </div>
+                <div class="member-column">
+                    <label><input type="checkbox" value="メンバーG"> メンバーG</label><br>
+                    <label><input type="checkbox" value="メンバーH"> メンバーH</label><br>
+                    <label><input type="checkbox" value="メンバーI"> メンバーI</label><br>
+                </div>
+            </div>
+            <button class="submit-btn" onclick="submitMembers()">選択</button>
+        </div>
+    </div>
+</body>
+</html>

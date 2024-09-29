@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>予定一覧</title>
+    <link rel="stylesheet" href=styles.css>
+    <script defer src="scripts.js"></script>
+</head>
+<body class="schedulein-page">
+    <header>
+        <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+        <h1 class="title">予定一覧</h1>
+        <button class="logout-btn">ログアウト</button>
+    </header>
+
+    <nav id="sidebar" class="sidebar">
+        <ul>
+            <li><a href="schedulein.html">予定登録</a></li>
+            <li><a href="schedule-list.html">予定一覧</a></li>
+            <li><a href="vacation-request.html">休暇申請</a></li>
+            <li><a href="vacation-approval.html">休暇承認</a></li>
+            <li><a href="info-change.html">情報変更</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div><!-- 上部に班指定ボタンと曖昧検索ボタン -->
+        <div class="top-btn">
+            <button class="team-select-btn" onclick="openTeamModal()">班指定</button>
+            <button class="search-open-btn" onclick="openSearchModal()">検索</button>
+        </div>
+    </div>
+        <!-- 右側に表の表示 -->
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>班</th>
+                        <th>氏名</th>
+                        <th>AM①</th>
+                        <th>AM②</th>
+                        <th>PM①</th>
+                        <th>PM②</th>
+                        <th>連絡</th>
+                    </tr>
+                </thead>
+                <tbody id="schedule-table-body">
+                    <!-- 動的にデータが表示されます -->
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <!-- 班指定モーダル -->
+    <div id="teamModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeTeamModal()">&times;</span>
+            <h3>班を選択</h3>
+            <div class="team-list">
+                <label><input type="checkbox" value="班A"> 班A</label><br>
+                <label><input type="checkbox" value="班B"> 班B</label><br>
+                <label><input type="checkbox" value="班C"> 班C</label><br>
+            </div>
+            <button class="submit-btn" onclick="submitTeams()">選択</button>
+        </div>
+    </div>
+
+    <!-- 曖昧検索モーダル -->
+    <div id="searchModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeSearchModal()">&times;</span>
+            <h3>検索</h3>
+            <input type="text" id="search-box"  class="search-box" placeholder="検索キーワードを入力">
+            <button class="submit-btn" onclick="search()">検索</button>
+        </div>
+    </div>
+
+    <!-- 氏名クリック時の詳細ポップアップ -->
+    <div id="infoPopup" class="modal">
+        <div class="modal-content">
+            <h3>詳細情報</h3>
+            <table class="popup-table">
+                <tr><td>班:</td><td id="popup-team"></td></tr>
+                <tr><td>氏名:</td><td id="popup-name"></td></tr>
+                <tr><td>電話番号:</td><td id="popup-phone"></td></tr>
+                <tr><td>mail:</td><td id="popup-mail"></td></tr>
+            </table>
+            <button class="submit-btn" onclick="closeInfoPopup()">閉じる</button>
+        </div>
+    </div>
+</body>
+</html>

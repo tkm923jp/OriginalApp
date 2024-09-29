@@ -1,0 +1,707 @@
+/* 全体のスタイル */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f5f5f5;
+  margin: auto;
+  padding: 0;
+  overflow-x: auto;
+  overflow: hidden; 
+}
+
+/* --- ログインページのスタイル --- */
+body.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #58c7a8 0%, #ACB6E5 100%);
+}
+
+.login-container {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+}
+
+.login-box {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  text-align: center;
+}
+
+.input-group label {
+  font-size: 14px;
+  color: #666;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #357ABD;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+  background-color: #2E6DA4;
+}
+
+.signup-link a {
+  color: #357ABD;
+  text-decoration: none;
+}
+
+.signup-link a:hover {
+  text-decoration: underline;
+}
+
+/* --- スケジュールインページのスタイル --- */
+body.schedulein-page {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ヘッダーのスタイル */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #4A90E2; /* 落ち着いた青 */
+  background: linear-gradient(135deg, #58c7a8 0%, #ACB6E5 100%);
+  color: white;
+  padding: 15px 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.hamburger {
+  font-size: 30px;
+  cursor: pointer;
+  padding-right: 20px;
+}
+
+.title {
+  font-size: 24px;
+  text-align: center;
+  flex-grow: 1;
+  margin: 0; /* タイトルの余白をリセット */
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* ログアウトボタンのスタイル */
+.logout-btn {
+  background-color: #357ABD; /* 落ち着いた濃い青 */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: auto;
+}
+
+.logout-btn:hover {
+  background-color: #2E6DA4; /* 濃いめのホバー時の色 */
+}
+
+/* サイドバーのスタイル */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  height: 100%;
+  width: 250px;
+  background-color: #4b8897; /* ダークブルー系 */
+  padding-top: 60px;
+  transition: 0.3s;
+}
+
+.sidebar ul {
+  list-style-type: none;
+}
+
+.sidebar ul li {
+  padding: 10px 20px;
+}
+
+.sidebar ul li a {
+  color: #ECF0F1; /* 薄い青白色 */
+  text-decoration: none;
+  font-size: 18px;
+  display: block;
+}
+
+.sidebar ul li a:hover {
+  background-color: #4a949f; /* マウスオーバー時の色 */
+}
+
+.sidebar.active {
+  left: 0;
+}
+
+/* メインコンテンツ*/
+main {
+  /*display: flex;*/
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 60px); /* ヘッダーを除く高さ*/
+  width: 100%; /* 親要素の幅を制限しない */
+} 
+
+/* スケジュール登録のコンテナ */
+.schedule-container {
+  text-align: center;
+  width: 50%; /* 固定幅にせず、自由に広がるように設定 */
+  padding: 20px;
+
+  background-color: white;
+  border-radius: 10px;
+  margin: 20px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  min-width: 600px; /* 最小幅を設定しておくとレイアウトが崩れにくい */
+}
+
+/* 日付選択のデザイン */
+.date-picker {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+#selected-date {
+  padding: 10px;
+  width: 200px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+.calendar-btn {
+  background-color: #4A90E2;
+  color: white;
+  border: none;
+  padding: 8px;
+  margin-left: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.calendar{
+  display: inline-block;
+width: 25%;
+padding: 0em 0em;
+line-height: 2;
+font-size: 16px;
+border: 1px solid #999;
+box-sizing: border-box;
+background: #f2f2f2;
+margin: 0.5em 0;
+}
+
+/* AM/PMの横並びプルダウン */
+.horizontal-select {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+select {
+  padding: 8px;
+  width: 48%;
+  margin: 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+/* 固定メンバーセクション */
+.fixed-member {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* チェックボックスとテキストを横並びに */
+.fixed-member-checkbox {
+  display: flex;
+  align-items: center;
+}
+
+/* チェックボックスのスタイル */
+.fixed-member-checkbox input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px; /* テキストとの間隔を設定 */
+  cursor: pointer;
+}
+
+/* 固定メンバーテキストのスタイル */
+.fixed-member-checkbox label {
+  font-size: 16px;
+  color: #333;
+}
+
+/* メンバー選択ボタンと登録ボタンのスタイル統一 */
+.fixed-member .member-select-btn {
+  background-color: #4A90E2;
+  color: white;
+  border: none;
+  padding: 12px 20px; /* 登録ボタンと同じ大きさ */
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px; /* 縦間隔を均等に */
+}
+
+.fixed-member .member-select-btn:hover,
+.submit-btn:hover {
+  background-color: #357ABD;
+}
+
+
+.submit-btn {
+  background-color: #4A90E2;
+  color: white;
+  border: none;
+  padding: 12px 55px; /* 登録ボタンと同じ大きさ */
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px; /* 縦間隔を均等に */
+}
+
+/* 上部に表示される班指定ボタンと曖昧検索ボタン */
+.top-btn{
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 10px;
+  margin-left: 20px;
+  margin-right: 20px;/* ボタンと表の間隔を調整 */
+  margin-bottom: 0px;
+}
+
+.team-select-btn,
+.search-open-btn,.cancel-btn {
+  background-color: #4A90E2;
+  color: white;
+  border: none;
+  padding: 12px 20px; /* 予定登録ボタンと同じサイズ */
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 150px; /* 任意の幅を設定 */
+  margin-bottom: 10px; /* 各ボタン間の間隔を調整 */
+}
+
+.team-select-btn:hover,
+.search-open-btn:hover {
+  background-color: #357ABD;
+}
+
+/* 右側に表示されるテーブル */
+.table-container {
+  width: 100%;
+  height: 400px; /* 表示されるテーブルの高さを固定 */
+  overflow-y: scroll; /* 10行以上ある場合はスクロール可能に */
+  border: 1px solid #ccc;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 12px;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+th {
+  background-color: #f4f4f4;
+}
+
+/* 列幅の指定 */
+th:nth-child(1),
+td:nth-child(1) {
+  width: 80px; /* 班の列：全角5文字 */
+}
+
+th:nth-child(2),
+td:nth-child(2) {
+  width: 120px; /* 氏名の列：全角7文字 */
+}
+
+th:nth-child(3),
+td:nth-child(3),
+th:nth-child(4),
+td:nth-child(4),
+th:nth-child(5),
+td:nth-child(5) {
+  width: 160px; /* AM/PMの列：全角8文字 */
+}
+
+th:nth-child(6),
+td:nth-child(6) {
+  width: 200px; /* 連絡の列：全角10文字 */
+}
+
+/* モーダルウィンドウのスタイル */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: white;
+  margin: 15% auto;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  text-align: center;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: black;
+}
+
+.popup-table td {
+  padding: 10px;
+  text-align: left;
+}
+
+.search-box{
+  display: inline-block;
+  width: 100%;
+  padding: 0em 0.5em;
+  line-height: 3;
+  font-size: 16px;
+  border: 1px solid #999;
+  box-sizing: border-box;
+  background: #f2f2f2;
+  margin: 0.5em 0;
+}
+
+/* 休暇申請コンテナ */
+.vacation-container {
+  text-align: center;
+  width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ラベルテキストのスタイル */
+.label-text {
+  font-size: 16px;
+  margin-bottom: 10px;
+  display: block;
+  text-align: left;
+}
+
+/* プルダウンメニュー */
+.dropdown {
+  padding: 10px;
+  width: 55%;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* メンバー選択モーダル */
+.member-list {
+  display: flex;
+  justify-content: space-between;
+}
+
+.member-column {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+}
+
+/* 休暇申請一覧リンク */
+.link-container {
+  margin-top: 5px;
+  font-size: 14px;
+  text-decoration: underline;color: #357ABD;
+}
+
+.link-container a {
+  color: #357ABD;
+  text-decoration: none;
+}
+
+.link-container a:hover {
+  text-decoration: underline;
+}
+
+/* 休暇申請承認コンテナ */
+.approval-container {
+  text-align: center;
+  width: 90%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* テーブルスタイル */
+.approval-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.approval-table th, .approval-table td {
+  padding: 12px;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+.approval-table th {
+  background-color: #f4f4f4;
+}
+
+/* 承認・取り消しボタン */
+.approval-buttons {
+  
+  justify-content: center;
+  gap: 20px;
+}
+
+.cancel-btn {
+  background-color: #4A90E2;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.submit-btn:hover, .cancel-btn:hover {
+  background-color: #357ABD;
+}
+
+.cancel-btn {
+  background-color: #E74C3C;
+}
+
+.cancel-btn:hover {
+  background-color: #C0392B;
+}
+
+/* ユーザー登録情報コンテナ */
+.info-container {
+  text-align: center;
+  width: 90%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* テーブルスタイル */
+.info-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.info-table th, .info-table td {
+  padding: 12px;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+.info-table th {
+  background-color: #f4f4f4;
+}
+
+/* テーブルのスクロール */
+.info-container {
+  max-height: 400px;
+  overflow-y: scroll; /* 10列以上のデータでスクロール可能に */
+}
+
+/* 変更フォーム、新規登録フォームのスタイル */
+.form-container {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: none;
+}
+
+.form-container label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-container input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* ボタンのスタイル */
+.submit-btn, .cancel-btn, .change-btn {
+  background-color: #4A90E2;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.cancel-btn {
+  background-color: #E74C3C;
+}
+
+.cancel-btn:hover {
+  background-color: #C0392B;
+}
+
+.submit-btn:hover, .change-btn:hover {
+  background-color: #357ABD;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+/* モーダルウィンドウの共通スタイル */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* 背景を暗くする */
+}
+
+.modal-content {
+  background-color: white;
+  margin: 15% auto;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: black;
+}
+
+/* フォームのスタイル */
+.form-container label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-container input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* ボタンのスタイル */
+.submit-btn, .cancel-btn, .change-btn {
+  background-color: #4A90E2;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.cancel-btn {
+  background-color: #E74C3C;
+}
+
+.cancel-btn:hover {
+  background-color: #C0392B;
+}
+
+.submit-btn:hover, .change-btn:hover {
+  background-color: #357ABD;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}

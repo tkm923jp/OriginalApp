@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>休暇申請</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="scripts.js"></script>
+</head>
+<body class="schedulein-page">
+    <header>
+        <div class="hamburger" onclick="toggleMenu()">
+            &#9776;
+        </div>
+        <h1 class="title">休暇申請</h1>
+        <button class="logout-btn">ログアウト</button>
+    </header>
+
+    <nav id="sidebar" class="sidebar">
+        <ul>
+            <li><a href="schedulein.html">予定登録</a></li>
+            <li><a href="schedule-list.html">予定一覧</a></li>
+            <li><a href="vacation-request.html">休暇申請</a></li>
+            <li><a href="vacation-approval.html">休暇承認</a></li>
+            <li><a href="info-change.html">情報変更</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="vacation-container">
+            <h2>休暇種別</h2>
+            <!-- 休暇種別 -->
+            <label for="vacation-type" class="label-text"></label>
+            <select id="vacation-type" class="dropdown">
+                <option value="有給休暇">有給休暇</option>
+                <option value="半休">半休</option>
+                <option value="特別休暇">特別休暇</option>
+            </select>
+
+            <!-- 取得日（カレンダー） -->
+            <h2>取得日</h2>
+            <label for="selected-date" class="label-text"></label>
+            <div class="date-picker">
+                <input type="text" id="selected-date" readonly>
+                <button class="calendar-btn" onclick="toggleCalendar()">📅</button>
+                <input type="date" id="calendar" class="calendar" onchange="updateDate()" style="display:none;">
+            </div>
+
+            <!-- 固定メンバーへ反映 -->
+            <div class="fixed-member">
+                <div class="fixed-member-checkbox">
+                    <input type="checkbox" id="fixed-checkbox">
+                    <label for="fixed-checkbox">固定メンバーへ反映</label>
+                </div>
+                <button class="member-select-btn" onclick="openMemberModal()">メンバーを選択</button>
+            </div>
+
+            <!-- 申請ボタン -->
+            <button class="submit-btn">申請</button>
+
+            <!-- 休暇申請一覧リンク -->
+            <div class="link-container">
+                <a href="vacation-list.html">休暇申請一覧</a>
+            </div>
+        </div>
+
+        <!-- メンバー選択モーダル -->
+        <div id="memberModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeMemberModal()">&times;</span>
+                <h3>メンバーを選択</h3>
+                <div class="member-list">
+                    <div class="member-column">
+                        <label><input type="checkbox" value="メンバーA"> メンバーA</label><br>
+                        <label><input type="checkbox" value="メンバーB"> メンバーB</label><br>
+                        <label><input type="checkbox" value="メンバーC"> メンバーC</label><br>
+                    </div>
+                    <div class="member-column">
+                        <label><input type="checkbox" value="メンバーD"> メンバーD</label><br>
+                        <label><input type="checkbox" value="メンバーE"> メンバーE</label><br>
+                        <label><input type="checkbox" value="メンバーF"> メンバーF</label><br>
+                    </div>
+                    <div class="member-column">
+                        <label><input type="checkbox" value="メンバーG"> メンバーG</label><br>
+                        <label><input type="checkbox" value="メンバーH"> メンバーH</label><br>
+                        <label><input type="checkbox" value="メンバーI"> メンバーI</label><br>
+                    </div>
+                </div>
+                <button class="submit-btn" onclick="submitMembers()">選択</button>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

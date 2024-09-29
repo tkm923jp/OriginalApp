@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>休暇承認</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="scripts.js"></script>
+</head>
+<body class="schedulein-page">
+    <header>
+        <div class="hamburger" onclick="toggleMenu()">
+            &#9776;
+        </div>
+        <h1 class="title">休暇承認</h1>
+        <button class="logout-btn">ログアウト</button>
+    </header>
+
+    <nav id="sidebar" class="sidebar">
+        <ul>
+            <li><a href="schedulein.html">予定登録</a></li>
+            <li><a href="schedule-list.html">予定一覧</a></li>
+            <li><a href="vacation-request.html">休暇申請</a></li>
+            <li><a href="vacation-approval.html">休暇承認</a></li>
+            <li><a href="info-change.html">情報変更</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- 休暇申請承認のテーブル -->
+        <div class="approval-container">
+            <table class="approval-table">
+                <thead>
+                    <tr>
+                        <th>選択</th>
+                        <th>申請日</th>
+                        <th>申請者</th>
+                        <th>休暇理由</th>
+                        <th>取得日</th>
+                        <th>承認状態</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- ダミーデータ -->
+                    <tr>
+                        <td><input type="checkbox" class="select-info"></td>
+                        <td>2023-09-01</td>
+                        <td>山田 太郎</td>
+                        <td>有給休暇</td>
+                        <td>2023-09-15</td>
+                        <td>未承認</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="select-info"></td>
+                        <td>2023-09-05</td>
+                        <td>鈴木 花子</td>
+                        <td>半休</td>
+                        <td>2023-09-20</td>
+                        <td>未承認</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- 承認・取り消しボタン -->
+            <div class="approval-buttons">
+                <button class="submit-btn" onclick="approveSelection()">承認</button>
+                <button class="cancel-btn" onclick="cancelSelection()">取り消し</button>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

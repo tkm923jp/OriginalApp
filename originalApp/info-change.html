@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>情報変更</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="scripts.js"></script>
+</head>
+<body class="schedulein-page">
+    <header>
+        <div class="hamburger" onclick="toggleMenu()">
+            &#9776;
+        </div>
+        <h1 class="title">情報変更</h1>
+        <button class="logout-btn">ログアウト</button>
+    </header>
+
+    <nav id="sidebar" class="sidebar">
+        <ul>
+            <li><a href="schedulein.html">予定登録</a></li>
+            <li><a href="schedule-list.html">予定一覧</a></li>
+            <li><a href="vacation-request.html">休暇申請</a></li>
+            <li><a href="vacation-approval.html">休暇承認</a></li>
+            <li><a href="info-change.html">情報変更</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- 登録情報のテーブル -->
+        <div class="info-container">
+            <table class="info-table">
+                <thead>
+                    <tr>
+                        <th>選択</th>
+                        <th>班</th>
+                        <th>氏名</th>
+                        <th>TEL</th>
+                        <th>mail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- ダミーデータ -->
+                    <tr>
+                        <td><button class="change-btn" onclick="openChangeForm('班A', '山田 太郎', '090-1234-5678', 'yamada@example.com')">変更</button></td>
+                        <td>班A</td>
+                        <td>山田 太郎</td>
+                        <td>090-1234-5678</td>
+                        <td>yamada@example.com</td>
+                    </tr>
+                    <tr>
+                        <td><button class="change-btn" onclick="openChangeForm('班B', '鈴木 花子', '080-9876-5432', 'suzuki@example.com')">変更</button></td>
+                        <td>班B</td>
+                        <td>鈴木 花子</td>
+                        <td>080-9876-5432</td>
+                        <td>suzuki@example.com</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- 新規登録ボタン -->
+            <button class="submit-btn" onclick="openNewForm()">新規登録</button>
+        </div>
+
+        <!-- 情報変更フォーム（モーダル） -->
+        <div id="changeFormModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeChangeForm()">&times;</span>
+                <h3>情報を変更</h3>
+                <label>班:</label>
+                <input type="text" id="changeGroup" value="">
+                <label>氏名:</label>
+                <input type="text" id="changeName" value="">
+                <label>TEL:</label>
+                <input type="text" id="changeTel" value="">
+                <label>mail:</label>
+                <input type="email" id="changeMail" value="">
+                <div class="form-buttons">
+                    <button class="submit-btn" onclick="submitChange()">変更</button>
+                    <button class="cancel-btn" onclick="deleteUser()">削除</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 新規登録フォーム（モーダル） -->
+        <div id="newFormModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeNewForm()">&times;</span>
+                <h3>新規登録</h3>
+                <label>班:</label>
+                <input type="text" id="newGroup">
+                <label>氏名:</label>
+                <input type="text" id="newName">
+                <label>TEL:</label>
+                <input type="text" id="newTel">
+                <label>mail:</label>
+                <input type="email" id="newMail">
+                <div class="form-buttons">
+                    <button class="submit-btn" onclick="submitNew()">登録</button>
+                    <button class="cancel-btn" onclick="closeNewForm()">戻る</button>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
