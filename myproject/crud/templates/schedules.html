@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block title %}予定一覧{% endblock %}
+{% block content %}
+<h1>予定一覧</h1>
+<div style="display: flex; align-items: center; justify-content: center; margin-bottom: 5px;">
+  <!-- 前日ボタンフォーム -->
+  <form method="get" id="prev-day-form" style="margin-right: 10px;">
+  <input type="hidden" name="selected_date" id="prev-day-input">
+  <button type="submit" class="btn btn-secondary">前日</button>
+</form>
+
+<!-- 現在選択中の日付 -->
+<h1 id="selected-date" style="margin: 0 15px;"></h1>
+
+<!-- 翌日ボタンフォーム -->
+<form method="get" id="next-day-form" style="margin-left: 10px;">
+  <input type="hidden" name="selected_date" id="next-day-input">
+  <button type="submit" class="btn btn-secondary">翌日</button>
+</form>
+</div>
+
+<table class="table table-striped table-hover table-bordered">
+  <thead>
+    <tr>
+      <th>班</th>
+      <th>氏名</th>
+      <th>AM①</th>
+      <th>AM②</th>
+      <th>PM①</th>
+      <th>PM②</th>
+      <th>連絡事項</th>
+      <th>アクション</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for user in object_list %}
+    <tr>
+      <td>{{ user.group }}</td> <!-- User モデルの 'group' フィールド -->
+      <td>{{ user.name }}</td>  <!-- User モデルの 'name' フィールド -->
+      <td>{{ user.schedule_first }}</td> <!-- Annotate された schedule_first -->
+      <td>{{ user.schedule_second }}</td> <!-- Annotate された schedule_second -->
+      <td>{{ user.schedule_third }}</td> <!-- Annotate された schedule_third -->
+      <td>{{ user.schedule_fourth }}</td> <!-- Annotate された schedule_fourth -->
+      <td>{{ user.contact }}</td>
+      <td>
+        {% if user.schedule_key %}
+        <button class="btn btn-primary" onclick="location.href='{% url 'edit_schedule' pk=user.schedule_key %}'">編集</button>
+        {% else %}
+        <button class="btn btn-success" onclick="location.href='{% url 'new_schedule' %}'">予定登録</button>
+        {% endif %}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<script>
+  // 現在のURLからselected_dateを取得
+  const urlParams = new URLSearchParams(window.location.search);
+  const selectedDateParam = urlParams.get("selected_date");
+  const currentDate = selectedDateParam ? new Date(selectedDateParam) : new Date();
+
+  // 前日と翌日を計算
+  const prevDate = new Date(currentDate);
+  prevDate.setDate(currentDate.getDate() - 1);
+
+  const nextDate = new Date(currentDate);
+  nextDate.setDate(currentDate.getDate() + 1);
+
+  // 前日と翌日をhidden inputに設定
+  document.getElementById("prev-day-input").value = prevDate.toISOString().split("T")[0];
+  document.getElementById("next-day-input").value = nextDate.toISOString().split("T")[0];
+
+  // 現在選択中の日付を表示
+  document.getElementById("selected-date").textContent = currentDate.toISOString().split("T")[0];
+</script>
+
+{% endblock %}

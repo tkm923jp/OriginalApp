@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}情報変更{% endblock %}
+{% block content %}
+<h1>情報変更</h1>
+<a href="{% url 'new_user' %}">新規作成</a>
+<table class="table table-striped table-hover table-bordered">
+  <thead>
+    <tr>
+      <th>社員番号</th>
+      <th>氏名</th>
+      <th>電話番号</th>
+      <th>メールアドレス</th>
+      <th>班</th>
+      <th>権限</th>
+      <th>アクション</th>
+    </tr>
+  </thead>
+  {% for user in object_list %}
+  <tr>
+    <td>{{ user.idnumber }}</td>
+    <td>{{ user.name }}</td>
+    <td>{{ user.phonenumber }}</td>
+    <td>{{ user.email }}</td>
+    <td>{{ user.group }}</td>
+    <td>{{ user.category }}</td>
+    <td>
+      <button class="btn btn-primary" onclick="location.href='{% url 'edit' pk=user.pk %}'">編集</button>
+      <button class="btn btn-danger" onclick="location.href='{% url 'delete' pk=user.pk %}'">削除</button>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

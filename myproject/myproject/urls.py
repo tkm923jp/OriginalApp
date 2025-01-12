@@ -21,12 +21,13 @@ from crud import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.TopView.as_view(), name="top"),
-    path('crud/user_list/', views.UserListView.as_view(), name="user_list"),
+    path('crud/users/', views.UserListView.as_view(), name="users"),
     path('crud/new_user/', views.UserCreateView.as_view(), name="new_user"),
     path('crud/edit/<int:pk>', views.UserUpdateView.as_view(), name="edit"),
     path('crud/delete/<int:pk>', views.UserDeleteView.as_view(), name="delete"),
-    path('crud/schedule_list/', views.ScheduleListView.as_view(), name="schedule_list"),
+    path('crud/schedules/', views.ScheduleListView.as_view(), name="schedules"),
     path('crud/new_schedule/', views.ScheduleCreateView.as_view(), name="new_schedule"),
+    path('crud/edit_schedule/<int:pk>', views.ScheduleUpdateView.as_view(), name="edit_schedule"),
     path('login/', views.LoginView.as_view(), name="login"),
     path('logout/', views.LogoutView.as_view(), name="logout"),
 ]

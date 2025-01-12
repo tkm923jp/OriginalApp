@@ -127,7 +127,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # ログイン認証
 LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'schedule_list'
+LOGIN_REDIRECT_URL = 'schedules'
 LOGOUT_REDIRECT_URL = 'login'
 
 

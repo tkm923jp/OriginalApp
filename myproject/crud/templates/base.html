@@ -14,7 +14,7 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary" style="margin-bottom: 1rem;">
     <div class="container-fluid">
-      <a class="navbar-brand" href="{% url 'schedule_list' %}">Whiteboard</a>
+      <a class="navbar-brand" href="{% url 'schedules' %}">Whiteboard</a>
 
       <!-- メニューアイコン -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -28,7 +28,7 @@
         <!-- 左寄 -->
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'schedule_list' %}">予定一覧</a>
+            <a class="nav-link active" aria-current="page" href="{% url 'schedules' %}">予定一覧</a>
           </li>
 
           <li class="nav-item">
@@ -37,7 +37,7 @@
 
           {% if request.user.is_authenticated %}
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'user_list' %}">情報変更</a>
+            <a class="nav-link active" aria-current="page" href="{% url 'users' %}">情報変更</a>
           </li>
           {% endif %}
           

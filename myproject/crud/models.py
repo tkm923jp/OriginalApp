@@ -51,7 +51,7 @@ class User(models.Model):
     
 # 新規作成・編集完了時のリダイレクト先
     def get_absolute_url(self):
-        return reverse('user_list')
+        return reverse('users')
 
 
 class Schedule(models.Model):
@@ -66,7 +66,7 @@ class Schedule(models.Model):
         return self.idnumber
     
     def get_absolute_url(self):
-        return reverse('schedule_list')
+        return reverse('schedules')
     
 
 
